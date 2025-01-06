@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form id="formulario">
+        Nome: <input type="text" name="nome" value="PATINHO"/> <br />
+        Sobrenome: <input type="text" name="sobrenome" value="DONALD">
+    </form>
+
+    <p id="myP"></p>
+
+    <script>
+        let formulario = document.forms["formulario"];
+        let texto = "";
+        /*
+            Pega o nome e o sobrenome e dá uma quebra de linha
+        */
+        texto = formulario.elements[0].value + "<br />";
+        texto += formulario.elements[1].value;
+
+        let paragrafo = document.getElementById("myP");
+        paragrafo.innerHTML = texto;
+
+    </script>
+</body>
+</html>
