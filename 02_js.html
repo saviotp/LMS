@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>PEGANDO PARÁGRAFOS!</h1>
+    <p>Este é o 1 parágrafo!</p>
+    <p>Este é o 2 parágrafo!</p>
+    <p>Este é o 3 parágrafo!</p>
+
+    <p id="myP">teste 01</p>
+    <p id="myP">teste 02</p>
+
+    <p class="textos">Esse é o meu texto 1</p>
+    <p class="textos">Esse é o meu texto 2</p>
+    <p class="textos">Esse é o meu texto 3</p>
+
+    <script>
+
+        /*
+            Independe do ID e classe
+            Recebe uma LISTA de objetos
+        */
+        let paragrafos = document.getElementsByTagName("p")
+        /*
+            Acessa o vetor e altera
+            Recebe uma LISTA de objetos
+        */
+       paragrafos[0].innerHTML = "OLHA SÓ A MUDANÇA!!!"
+       
+       let classes = document.getElementsByClassName("textos");
+       classes[2].innerHTML = "Mudei também"
+
+        let p = document.getElementById("myP");
+        /*
+            Só mudará o primeiro
+            Não tenha mais de um item com mesmo ID por favor
+        */
+        p.innerHTML = "ALTERAÇÃO"
+
+    </script>
+</body>
+</html>
