@@ -4,6 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+
+    <style>
+        .textos {
+            background-color: rebeccapurple;
+        }
+    </style>
 </head>
 <body>
     <h1>PEGANDO PARÁGRAFOS!</h1>
@@ -17,6 +23,8 @@
     <p class="textos">Esse é o meu texto 1</p>
     <p class="textos">Esse é o meu texto 2</p>
     <p class="textos">Esse é o meu texto 3</p>
+
+    <div class="textos">Div classista!</div>
 
     <script>
 
@@ -41,6 +49,11 @@
         */
         p.innerHTML = "ALTERAÇÃO"
 
+        /*
+            Seleciona APENAS os parágrafos da classe "textos"
+        */
+        let paragrafos_classe = document.querySelectorAll("p.textos")
+        paragrafos_classe[1].innerHTML = "Mudei também 2"
     </script>
 </body>
 </html>
