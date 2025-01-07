@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Mudando Imagens!</h1>
+
+    <img id="imagem"
+        height="150px"
+        src="https://www.quixada.ufc.br/wp-content/uploads/2015/05/Jefferson-de-Carvalho-Silva1-225x300.png" 
+        alt="Professor jefferson-de-carvalho-silva"
+    >
+    <br>
+
+    <button onclick="mudarParaAragas()">Aragas</button>
+    <button onclick="mudarParaVilnei()">Vilnei</button>
+    <button onclick="mudarParaIngrid()">Ingrid</button>
+    <button onclick="davidSennaJumpScare()">Senna</button>
+
+    <h1 id="meuH1">Meu H1!</h1>
+
+    <script>
+        function mudarParaAragas() {
+            let imagem = document.getElementById("imagem");
+            imagem.src = "https://www.quixada.ufc.br/wp-content/uploads/2015/05/Arag%C3%A3o-225x300.png";
+        }
+
+        function mudarParaVilnei() {
+            let imagem = document.getElementById("imagem");
+            imagem.src = "https://www.quixada.ufc.br/wp-content/uploads/2015/11/Jo%C3%A3o-225x300.png";
+        }
+
+        function mudarParaIngrid() {
+            let imagem = document.getElementById("imagem");
+            imagem.src = "https://www.quixada.ufc.br/wp-content/uploads/2015/05/Ingrid-Teixeira-Monteiro1-225x300.png";
+        }
+        
+        function davidSennaJumpScare() {
+            let imagem = document.getElementById("imagem");
+            imagem.src = "https://www.quixada.ufc.br/wp-content/uploads/2015/05/David-Sena-Oliveira-Final1-225x300.png";
+            imagem.style.height = "1000px"
+        }
+
+        // Há como ENXERTAR HTML pelo script com a função WRITE
+
+        document.write(Date());
+
+        let h1 = document.getElementById("meuH1");
+        h1.style.backgroundColor = "yellow"
+        h1.style.fontFamily = "Arial"
+    </script>
+</body>
+</html>
