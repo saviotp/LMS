@@ -133,54 +133,71 @@
         .addEventListener(
                 //também chamam o EVENT só com a letra E
                 "submit", (event) => {
-                        let username = document.getElementById("username");
-                        let course = document.getElementById("course");
-                        let ira = document.getElementById("ira");
-                        let password = document.getElementById("password");
+                    /*chamando o NOME DO USUÁRIO*/
+                    handleInputText("username", "username-error", event);
+                    /*chamando o CURSO*/
+                    handleInputText("course", "course-error", event);
+                    /*chamando a SENHA*/
+                    handleInputText("password", "password-error", event);
 
-                        let usernameError = document.getElementById("username-error")
-                        let courseError = document.getElementById("course-error")
-                        let iraError = document.getElementById("ira-error")
-                        let passwordError = document.getElementById("password-error")
+                    /*Chamando o IRA*/
 
-                        if (username.value == "") {
+                    let ira = document.getElementById("ira");
+                    let iraError = document.getElementById("ira-error");
+                    if (ira.value == "" || isNaN(ira.value) || ira.value == 0 || ira.value > 10) {
+                        /*ALTERA o texto da div de erro*/
+                        iraError.innerHTML = "Número inválido";
+                        /*MOSTRA a div escondida*/
+                        iraError.style.display = "block";
+                        /*IMPEDE de enviar o formulário*/
+                        event.preventDefault();
+                    }
+                }
+            )
+            
+            /*uma FUNÇÃO que fornece as CAIXAS DE ERRO*/
+            function handleInputText(inputId, errorId, event) {
+                let inputElement = document.getElementById(inputId);
+                let divError = document.getElementById(errorId);
 
-                                //MUDA o texto em vermelho de AVISO
-                                usernameError.innerHTML = "Campo vazio! Preencha o nome do usuário.";
-                                usernameError.style.display = "block";
-                                //PREVINE o ENVIO do formulário
-                                event.preventDefault();
-                        } else if (username.value.length < 5) {
+                divError.style = "none";
+                inputElement.style.borderColor = "#ccc"
 
-                                usernameError.innerHTML = "O nome deve ter, pelo menos, 5 caracteres!";
-                                usernameError.style.display = "block";
-                                event.preventDefault();
-                        }
+                if (inputElement.value == "") {
+                    divError.innerHTML = "Campo Vazio!"
+                    divError.display = "block";
 
-                        if (course.value == "") {
+                    inputElement.style.borderColor = "red";
 
-                                courseError.innerHTML = "Campo vazio! Preencha o nome do curso.";
-                                courseError.style.display = "block";
-                                event.preventDefault();
-                        }
+                    event.preventDefault();
+                } else if (inputElement.value.length < 5) {
+                    divError.innerHTML = "O campo deve conter, no mínimo, 5 caracteres!"
 
-                        if (ira.value == "") {
+                    divError.style.display = "block";
+                    inputElement.style.borderColor = "red"
 
-                                iraError.innerHTML = "Campo vazio! Preencha o IRA.";
-                                iraError.style.display = "block";
-                                event.preventDefault();
-                        }
+                    event.preventDefault();
+                }
 
-                        if (password.value == "") {
+                function handleInputNumber(inputId, errorId, event) {
+                    let inputElement = document.getElementById(inputId);
+                    let divError = document.getElementById(errorId);
 
-                                passwordError.innerHTML = "Campo vazio! Preencha a senha.";
-                                passwordError.style.display = "block";
-                                event.preventDefault();
-                        }
+                    divError.display = "none";
+                    inputElement.style.borderColor = "#ccc"
+
+                    if (inputElement.value == "" || isNaN(inputElement.value) || inputElement.value < 0 || inputElement.value > 10) {
+                        divError.innerHTML = "Número Inválido!"
+
+                        divError.style.display = "block";
+                        divError.style.borderColor = "red";
+
+                        event.preventDefault();
+                    }
 
                 }
-        )
 
+            }
     </script>
 </body>
 </html>
