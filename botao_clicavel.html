@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h3>Botão clicável repetidas vezes</h3>
+    <button id="button" onclick="clique()">Click me!</button>
+
+    <script>
+        let cont = 0;
+        function clique() {
+            cont++;
+            let button = document.getElementById("button")
+            if (cont == 1) {
+                button.innerHTML = "click me again!"
+            } else if (cont == 2) {
+                button.innerHTML = "thank you!"
+            } else if (cont == 3) {
+                button.innerHTML = "goodbye!"
+            } else {
+                button.style.display = "none";
+            }
+    }
+    </script>
+</body>
+</html>
