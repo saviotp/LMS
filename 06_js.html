@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        body {
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+        }
+
+        #hidden-text {
+            display: none;
+        }
+
+        .mouse {
+            padding: 10px;
+            border: none;
+            
+            font-size: larger;
+            font-weight: bold;
+
+            height: 20%;
+            width: 20%;
+
+            background-color: bisque;
+        }
+    </style>
+</head>
+<body>
+    <h1>Eventos</h1>
+
+    <h3>Evento do Clique!</h3>
+    <button onclick="clique()">Me clique!</button>
+
+    <div id="hidden-text">
+        TEXTO ESCONDIDO!
+    </div>
+
+    <h3>Evento do OnInput</h3>
+    <input type="text" id="input" oninput="onInput()">
+
+    <h3>Evento do OnChange</h3>
+    <input type="text" id="input-2" onchange="onChange()">
+
+    <h3>Evento de onMouseOver e onMouseOut</h3>
+    <button class="mouse" id="mouse" onmouseover="mouseOver()" onmouseout="mouseOut()">Passa o mouse em cima!</button>
+
+    <script>
+        function clique() {
+            let textoEscondido = document.getElementById("hidden-text");
+
+            textoEscondido.style.display = "block"
+
+            if (textoEscondido.style.display == "block") {
+                textoEscondido.style.display = "none"
+            } else {
+                textoEscondido.style.display = "block"
+            }
+        }
+
+        //muda o TEXTO para CAPS LOCK ou UPPER CASE
+        function onInput() {
+            let texto = document.getElementById("input");
+            texto.value = texto.value.toUpperCase();
+        }
+
+        //faz o mesmo, porém APENAS AO MUDAR O FOCO da caixa
+        function onChange() {
+            let texto = document.getElementById("input-2");
+            texto.value = texto.value.toUpperCase();
+        }
+
+        function mouseOver() {
+            let button = document.getElementById("mouse");
+            button.style.color = "purple"
+        }
+
+        function mouseOut() {
+            let button = document.getElementById("mouse");
+            button.style.color = "black"
+        }
+    </script>
+</body>
+</html>
