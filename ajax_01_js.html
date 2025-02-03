@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AXIOS!</title>
+    <!--BIBLIOTECA para REQUISIÇÃO-->
+    <!--
+        Existem diversos métodos de requisição
+        GET
+        DELETE
+        HEAD
+
+        O AXIOS é mais recomendado em casos em geral
+        O FETCH é usado em sites beeem simples
+    -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.2.1/axios.min.js"></script>
+</head>
+<body>
+    <h1>AXIOS  e FETCH</h1>
+
+    <h3 id="nome-id"></h3>
+    <img src="" alt="pokemon" width="200px" id="pokemon-id">
+    <br>
+    <img src="" alt="pokemonSVG" width="200px" id="pokemon-svg-id">
+    <script>
+        function getPokemonAxios() {
+
+            /*
+                O get pega itens com base em uma PROMISE
+                PROMISE é algo que talvez não seja cumprido
+                O conteúdo a ser solicitado é ASSÍNCRONO
+                Há DUAS formas de acessar esse dado:
+                    - THEN: O que será feito SE E APENAS SE o dado chegar. O CATCH é SE E APENAS SE der ERRADO.
+                    - ?
+                ENQUANTO a função estiver sendo executada, pode-se criar uma função CALLBACK
+                Assim, o site não ficará travado enquanto a requisição chega.
+                Geralmente é uma função ANÔNIMA (parâmetros) => {execução}
+            */
+
+            axios.get("https://pokeapi.co/api/v2/pokemon/charizard")
+            .then(
+                (response) => {
+                    
+                    //SE o código DEPENDER DA RESPOSTA, o código deve, sem dúvidas, DENTRO DO RESPONSE
+                    
+                    let pokemonImg = document.getElementById("pokemon-id")
+
+                    //o RESPONSE me passa os DADOS DA API, acesso através do DESEMPACOTAMENTO DE DADOS
+                    pokemonImg.src = response.data.sprites.front_default;
+
+                    let pokemonSVG = document.getElementById("pokemon-svg-id")
+                    pokemonSVG.src = response.data.sprites.other.dream_world.front_default;
+
+                    //pegando o NOME
+
+                    let nome = document.getElementById("nome-id");
+                    nome.innerHTML = response.data.name;
+                }
+            )
+            .catch(
+                () => {
+                    console.log("DEU ERRADO!")
+                }
+            )
+        }
+
+        // FUNÇÃO PARA CHAMAR
+        // getPokemonAxios();
+
+        function getPokemonFetch() {
+            /*
+                Assim como o AXIOS GET, o FETCH retorna uma PROMESSA
+            */
+            fetch("https://pokeapi.co/api/v2/pokemon/charizard")
+            .then (
+                (response) => {
+                    
+                    //A principal diferença entre o AXIOS e FETCH é essa SEGUNDA REQUISIÇÃO
+                    
+                    return response.json()
+                }
+            )
+            
+            //faz-se OUTRA PROMESSA
+            
+            .then(
+                (json) => {
+                    //SE o código DEPENDER DA RESPOSTA, o código deve, sem dúvidas, DENTRO DO RESPONSE
+                    
+                    let pokemonImg = document.getElementById("pokemon-id")
+
+                    //o RESPONSE me passa os DADOS DA API, acesso através do DESEMPACOTAMENTO DE DADOS
+                    pokemonImg.src = json.sprites.front_default;
+
+                    let pokemonSVG = document.getElementById("pokemon-svg-id")
+                    pokemonSVG.src = json.sprites.other.dream_world.front_default;
+
+                    //pegando o NOME
+
+                    let nome = document.getElementById("nome-id");
+                    nome.innerHTML = json.name;
+                }
+            )
+            .catch (error => console.log(error))
+        }
+
+        getPokemonFetch();
+    </script>
+</body>
+</html>
